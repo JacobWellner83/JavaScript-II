@@ -90,7 +90,25 @@ console.log('Total is $'+ticketPriceTotal);
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
 // Problem 1
+//The event director needs a listing of just the names, emails and business names of the runners so that he can contact them later. 
+let contactFull = [];
+runners.forEach(function(array){
+    contactFull.push(`${array.first_name} ${array.last_name}, ${array.email}, ${array.company_name}`);
+});
 
+console.log(contactFull);
 // Problem 2
+//The event director would like to know which companies donated over $50.
+let highRollers = runners.filter((bigDonation) => {
+    return bigDonation.donation > 50;
+});
 
+console.log(highRollers)
 // Problem 3
+//The event director realizes that his bib order doesn't list the names with the sizes and would like a seperate list containing just names and sizes ordered.
+let namesAndSizes = [];
+runners.forEach(function(array){
+    namesAndSizes.push(`${array.first_name} ${array.last_name}, ${array.shirt_size}`);
+});
+
+console.log(namesAndSizes);

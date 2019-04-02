@@ -1,6 +1,14 @@
 // ==== Challenge 1: Write your own closure ====
 // Write a simple closure of your own creation.  Keep it simple!
 
+let subtract = (function () {
+  let reducer = 0;
+  return function () {reducer -= 1; return reducer}
+})();
+
+subtract();
+
+console.log(subtract()); //Returns -2//
 
 /* STRETCH PROBLEMS, Do not attempt until you have completed all previous tasks for today's project files */
 

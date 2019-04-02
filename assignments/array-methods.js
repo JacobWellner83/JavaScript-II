@@ -56,28 +56,59 @@ const runners = [{"id":1,"first_name":"Charmain","last_name":"Seiler","email":"c
 // ==== Challenge 1: Use .forEach() ====
 // The event director needs both the first and last names of each runner for their running bibs.  Combine both the first and last names into a new array called fullName. 
 let fullName = [];
+
+runners.forEach(function(array){
+    fullName.push(`${array.first_name} ${array.last_name}`);
+});
+   
 console.log(fullName);
 
 // ==== Challenge 2: Use .map() ====
 // The event director needs to have all the runner's first names converted to uppercase because the director BECAME DRUNK WITH POWER. Convert each first name into all caps and log the result
 let allCaps = [];
+runners.map((runner) => {
+    allCaps.push(runner.first_name.toUpperCase());
+})
 console.log(allCaps); 
 
 // ==== Challenge 3: Use .filter() ====
 // The large shirts won't be available for the event due to an ordering issue.  Get a list of runners with large sized shirts so they can choose a different size. Return an array named largeShirts that contains information about the runners that have a shirt size of L and log the result
-let largeShirts = [];
+let largeShirts = runners.filter((shirtOptions) => {
+    return shirtOptions.shirt_size === "L";
+});
+
 console.log(largeShirts);
 
 // ==== Challenge 4: Use .reduce() ====
 // The donations need to be tallied up and reported for tax purposes. Add up all the donations into a ticketPriceTotal array and log the result
 let ticketPriceTotal = [];
-console.log(ticketPriceTotal);
+ticketPriceTotal = runners.reduce((total, currentAmount) => total + currentAmount.donation, 0)
+
+console.log('Total is $'+ticketPriceTotal);
 
 // ==== Challenge 5: Be Creative ====
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
 // Problem 1
+//The event director needs a listing of just the names, emails and business names of the runners so that he can contact them later. 
+let contactFull = [];
+runners.forEach(function(array){
+    contactFull.push(`${array.first_name} ${array.last_name}, ${array.email}, ${array.company_name}`);
+});
 
+console.log(contactFull);
 // Problem 2
+//The event director would like to know which companies donated over $50.
+let highRollers = runners.filter((bigDonation) => {
+    return bigDonation.donation > 50;
+});
 
+console.log(highRollers)
 // Problem 3
+//The event director realizes that his bib order doesn't list the names with the sizes and would like a seperate list containing just names and sizes ordered.
+let namesAndSizes = [];
+runners.forEach(function(array){
+    namesAndSizes.push(`${array.first_name} ${array.last_name}, ${array.shirt_size}`);
+});
+
+console.log(namesAndSizes);
